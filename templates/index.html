@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YOLO-Object Detection</title>
+	<link rel="stylesheet" type="text/css" href="../static/index.css">
+	<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+	<!-- <script type="text/javascript" src="../static/index.js"></script> -->
+	<script>
+		function upload() {
+			let image = document.getElementById('image');
+			console.log("TEST")
+			$.ajax({
+				url: "http://localhost:5000/detect",
+				type:"POST",
+
+				success: function(data){
+					console.log(data);
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+
+
+
+<div class='App'>
+    <header class='App-header'>
+      <form action="/detect" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image"/>
+        <input class="btn" type="submit" value="Upload">
+      </form>
+      <img src="data:image/jpeg;base64,{{ img_data }}" alt="img_data"  id="imgslot"/>
+	</header>
+</div>
+
+</body>
+</html>
